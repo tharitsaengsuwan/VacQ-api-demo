@@ -57,12 +57,15 @@ exports.deleteHospital = async (req, res, next) => {
   try {
     const hospital = await Hospital.findByIdAndDelete(req.params.id);
 
-    if (hospital) {
-      return res.status(400).json({ sucess: false });
+    if (!hospital) {
+      return res
+        .status(400)
+        .json({ sucess: false, msg: "cannot find a hospital" });
     }
 
     res.status(200).json({ success: true, data: {} });
   } catch (err) {
+    console.log(err.stack)
     res.status(400).json({ success: false });
   }
 };
