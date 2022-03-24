@@ -20,6 +20,7 @@ app.use("/api/v1/auth", auth)
 app.use("/api/v1/appointments", appointments)
 
 const PORT = process.env.PORT || 5000;
+console.log(process.env.PORT)
 
 const server = app.listen(
   PORT,
